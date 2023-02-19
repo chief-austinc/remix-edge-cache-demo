@@ -1,4 +1,5 @@
 import { useLoaderData } from "@remix-run/react";
+import { addSeconds } from "date-fns";
 
 export const loader = () => {
   const randomNumber = Math.random();
@@ -24,8 +25,8 @@ export function headers() {
   return {
     "X-Stretchy-Pants": "its for fun",
     "Cache-Control":
-      "public, max-age=10, s-maxage=3600, stale-while-revalidate=600",
-    Expires: "2023-11-23T02:32:06.163Z",
+      "public, max-age=10, s-maxage=10, stale-while-revalidate=10",
+    Expires: addSeconds(new Date(), 10),
     "Last-Modified": "2022-11-23T02:32:06.163Z",
   };
 }
